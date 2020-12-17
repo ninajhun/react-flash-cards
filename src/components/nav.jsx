@@ -1,22 +1,39 @@
 import React from 'react'
 
-function Nav(props){
-  return(
+class Nav extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isActive: "view-cards"
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(view) {
+    this.props.setView(view);
+    this.setState({ isActive: view })
+  }
+
+  render() {
+
+  return (
     <ul className="nav nav-pills justify-content-end mt-4">
-       <li className="nav-item mr-2">
-         <a href="#" className="nav-link active" onClick = {() => props.setView("view-cards")}> View Cards </a>
-       </li>
+      <li className="nav-item mr-2">
+        <a href="#" className={ this.state.isActive === 'view-cards'? "nav-link active" : "nav-link"}  value = 'view-cards' onClick={() => this.handleClick('view-cards')}> View Cards </a>
+      </li>
 
       <li className="nav-item mr-2 ">
-        <a href="#" className="nav-link active" onClick = {() => props.setView("review-cards")}> Review </a>
+        <a href="#" className={this.state.isActive === 'review-cards' ? "nav-link active" : "nav-link"} value = 'review-cards' onClick={() => this.handleClick('review-cards')}> Review </a>
       </li>
 
       <li className="nav-item mr-2">
-        <a href="#" className="nav-link active" onClick = {() => props.setView("create-card")}> Create Card </a>
+        <a href="#" className={this.state.isActive === 'create-card'? "nav-link active" : "nav-link"} value = 'create-card' onClick={() => this.handleClick('create-card')}> Create Card </a>
       </li>
-     </ul>
-
+    </ul>
   )
+
+  }
+
 }
 
 export default Nav
