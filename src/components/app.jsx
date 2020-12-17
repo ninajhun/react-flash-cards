@@ -2,6 +2,7 @@ import React from 'react'
 import ViewCards from './view-cards'
 import ReviewCards from './review-cards'
 import CreateCard from './create-card'
+import Nav from './nav'
 
 
 class App extends React.Component {
@@ -20,12 +21,12 @@ class App extends React.Component {
     });
   }
 
-  getView(name){
-    switch(name) {
+  getView(){
+    switch(this.state.view) {
       case 'create-card':
         return <CreateCard />;
       case 'review-cards':
-        return <Review />;
+        return <ReviewCards />;
       case 'view-cards':
         return <ViewCards />;
       default:
@@ -40,7 +41,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        { this.getView(this.state.view)}
+        <Nav setView = {this.setView} />
+        { this.getView()}
       </div>
     );
   }
