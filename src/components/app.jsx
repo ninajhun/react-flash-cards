@@ -10,6 +10,8 @@ class App extends React.Component {
     this.state = {
       view: 'view-cards'
     }
+    this.setView = this.setView.bind(this);
+    this.getView = this.getView.bind(this);
   }
 
   setView(name){
@@ -18,9 +20,29 @@ class App extends React.Component {
     });
   }
 
+  getView(name){
+    switch(name) {
+      case 'create-card':
+        return <CreateCard />;
+      case 'review-cards':
+        return <Review />;
+      case 'view-cards':
+        return <ViewCards />;
+      default:
+        return null;
+    }
+  }
+
+  // render() {
+  //   return <h1 className="text-center">Flash Card App</h1>
+  // }
 
   render() {
-    return <h1 className="text-center">Flash Card App</h1>
+    return (
+      <div>
+        { this.getView(this.state.view)}
+      </div>
+    );
   }
 
 }

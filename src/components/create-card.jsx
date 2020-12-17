@@ -5,3 +5,5 @@ class CreateCard extends React.Component {
     return <h1>Create New Card</h1>
   }
 }
+
+export default CreateCard
