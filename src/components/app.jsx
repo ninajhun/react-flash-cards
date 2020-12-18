@@ -7,7 +7,7 @@ import { AppContext } from './context'
 
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       view: 'view-cards',
@@ -15,17 +15,18 @@ class App extends React.Component {
     }
     this.setView = this.setView.bind(this);
     this.getView = this.getView.bind(this);
-    this.saveCards = this.saveCards.bind(this)
+    this.saveCards = this.saveCards.bind(this);
+    this.addCard = this.addCard.bind(this)
   }
 
-  setView(name){
+  setView(name) {
     this.setState({
       view: name
     });
   }
 
-  getView(){
-    switch(this.state.view) {
+  getView() {
+    switch (this.state.view) {
       case 'create-card':
         return <CreateCard />;
       case 'review-cards':
@@ -37,20 +38,22 @@ class App extends React.Component {
     }
   }
 
-  saveCards(){
+  saveCards() {
     let cardsJSON = JSON.stringify(this.state.cards)
-    localStorage.setItem('flash-cards', cardsJSON)
-    // console.log("local storage:" , localStorage.getItem('flash-cards'))
+  }
+
+  addCard(card) {
+    this.setState({
+      cards: this.state.cards.concat(card)
+    }, this.saveCards)
   }
 
 
   render() {
-    // console.log(this.state.cards);
-    // this.saveCards();
 
     return (
       <div>
-        <Nav setView = {this.setView} view = {this.state.view} />
+        <Nav setView={this.setView} view={this.state.view} />
         { this.getView()}
       </div>
     );
