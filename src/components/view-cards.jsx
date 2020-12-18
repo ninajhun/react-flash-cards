@@ -7,9 +7,9 @@ class ViewCards extends React.Component {
     const cards = this.context.cards
 
 
-    const listCards = cards.map((card) => {
+    const listCards = cards.map((card, index) => {
       return (
-        <div className="col-3 mb-4 h-100" key={card.index}>
+        <div className="col-3 mb-4 h-100" key={index}>
           <div className="card" >
             <div className="card-header">
               {card.question}
