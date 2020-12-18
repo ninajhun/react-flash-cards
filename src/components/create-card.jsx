@@ -10,6 +10,7 @@ class CreateCard extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
   handleChange(event) {
@@ -31,12 +32,16 @@ class CreateCard extends React.Component {
       }
     );
 
+    this.reset()
+  }
+
+  reset(){
     this.setState({
       question: '',
       answer: ''
     });
+    this.props.setView('view-cards')
   }
-
 
   render() {
 
@@ -61,7 +66,7 @@ class CreateCard extends React.Component {
             </div>
 
             <div className="d-flex justify-content-end">
-              <button type="reset" className="btn btn-outline-danger mb-2 mr-3">Cancel</button>
+              <button type="reset" className="btn btn-outline-danger mb-2 mr-3" onClick={this.reset}>Cancel</button>
               <button type="submit" className="btn btn-outline-primary mb-2">Save Card</button>
             </div>
           </form>

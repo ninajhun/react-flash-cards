@@ -30,7 +30,7 @@ class App extends React.Component {
       case 'create-card':
         return (
           <AppContext.Provider value={ {addCard: this.addCard}}  >
-            <CreateCard />
+            <CreateCard setView={this.setView}/>
           </AppContext.Provider>
         )
       case 'review-cards':
