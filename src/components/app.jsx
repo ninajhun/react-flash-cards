@@ -28,7 +28,11 @@ class App extends React.Component {
   getView() {
     switch (this.state.view) {
       case 'create-card':
-        return <CreateCard />;
+        return (
+          <AppContext.Provider value={ {addCard: this.addCard}}  >
+            <CreateCard />
+          </AppContext.Provider>
+        )
       case 'review-cards':
         return <ReviewCards />;
       case 'view-cards':
