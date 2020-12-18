@@ -27,8 +27,8 @@ class CreateCard extends React.Component {
     event.preventDefault()
     this.context.addCard(
       {
-        'question:': this.state.question,
-        'answer:': this.state.answer
+        'question': this.state.question,
+        'answer': this.state.answer
       }
     );
 
@@ -72,8 +72,6 @@ class CreateCard extends React.Component {
           </form>
 
         </div>
-
-
 
       </div>
     )
