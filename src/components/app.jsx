@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'create-card',
+      view: 'view-cards',
       cards: []
     }
     this.setView = this.setView.bind(this);
@@ -29,14 +29,18 @@ class App extends React.Component {
     switch (this.state.view) {
       case 'create-card':
         return (
-          <AppContext.Provider value={ {addCard: this.addCard}}  >
-            <CreateCard setView={this.setView}/>
+          <AppContext.Provider value={{ addCard: this.addCard }}  >
+            <CreateCard setView={this.setView} />
           </AppContext.Provider>
         )
       case 'review-cards':
         return <ReviewCards />;
       case 'view-cards':
-        return <ViewCards />;
+        return (
+          <AppContext.Provider value={{ cards: this.state.cards }}>
+            <ViewCards />
+          </AppContext.Provider>
+        )
       default:
         return null;
     }
@@ -55,8 +59,6 @@ class App extends React.Component {
 
 
   render() {
-    console.log(localStorage.getItem('flash-cards'))
-
 
     return (
       <div>
