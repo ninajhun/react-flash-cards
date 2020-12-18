@@ -19,15 +19,15 @@ class Nav extends React.Component {
   return (
     <ul className="nav nav-pills justify-content-end mt-4">
       <li className="nav-item mr-2">
-        <a href="#" className={ this.state.isActive === 'view-cards'? "nav-link active" : "nav-link"}  value = 'view-cards' onClick={() => this.handleClick('view-cards')}> View Cards </a>
+        <a href="#" className={ this.state.isActive === 'view-cards' ? "nav-link active" : "nav-link"}  onClick={() => this.handleClick('view-cards')}> View Cards </a>
       </li>
 
       <li className="nav-item mr-2 ">
-        <a href="#" className={this.state.isActive === 'review-cards' ? "nav-link active" : "nav-link"} value = 'review-cards' onClick={() => this.handleClick('review-cards')}> Review </a>
+        <a href="#" className={this.state.isActive === 'review-cards' ? "nav-link active" : "nav-link"} onClick={() => this.handleClick('review-cards')}> Review </a>
       </li>
 
       <li className="nav-item mr-2">
-        <a href="#" className={this.state.isActive === 'create-card'? "nav-link active" : "nav-link"} value = 'create-card' onClick={() => this.handleClick('create-card')}> Create Card </a>
+        <a href="#" className={this.state.isActive === 'create-card'? "nav-link active" : "nav-link"}  onClick={() => this.handleClick('create-card')}> Create Card </a>
       </li>
     </ul>
   )
