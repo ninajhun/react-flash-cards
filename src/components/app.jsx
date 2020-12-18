@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       view: 'create-card',
-      cards: ["hi", "1111"]
+      cards: []
     }
     this.setView = this.setView.bind(this);
     this.getView = this.getView.bind(this);
@@ -48,7 +48,7 @@ class App extends React.Component {
 
   addCard(card) {
     this.setState({
-      cards: this.state.cards.concat(card)
+      cards: this.state.cards.concat([card])
     }, this.saveCards)
   }
 

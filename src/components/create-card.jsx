@@ -1,4 +1,5 @@
 import React from "react"
+import { AppContext } from "./context";
 
 class CreateCard extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class CreateCard extends React.Component {
         answer: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
@@ -20,8 +22,24 @@ class CreateCard extends React.Component {
     }
   }
 
+  handleSubmit(event){
+    event.preventDefault()
+    this.context.addCard(
+      {
+        'question:': this.state.question,
+        'answer:': this.state.answer
+      }
+    );
+
+    this.setState({
+      question: '',
+      answer: ''
+    });
+  }
+
 
   render() {
+
     return (
       <div className="container-fluid">
 
@@ -29,23 +47,22 @@ class CreateCard extends React.Component {
           <h1 className="text-center">Create New Card</h1>
         </div>
 
-
         <div className="row d-flex align-items-center justify-content-center">
 
-          <form className="col-7">
+          <form className="col-7" onSubmit={this.handleSubmit}>
             <div className="form-group">
-              <label htmlFor="">Question:</label>
-              <textarea class="form-control" name='question' value={this.state.value} onChange={this.handleChange} rows="3"></textarea>
+              <label>Question:</label>
+              <textarea className="form-control" name='question' value={this.state.question} onChange={this.handleChange} rows="3"></textarea>
             </div>
 
             <div className="form-group">
-              <label htmlFor="">Answer:</label>
-              <textarea class="form-control" name='answer' value={this.state.value} onChange={this.handleChange} rows="3"></textarea>
+              <label>Answer:</label>
+              <textarea className="form-control" name='answer' value={this.state.answer} onChange={this.handleChange} rows="3"></textarea>
             </div>
 
             <div className="d-flex justify-content-end">
-              <button type="reset" class="btn btn-outline-danger mb-2 mr-3">Cancel</button>
-              <button type="submit" class="btn btn-outline-primary mb-2">Save Card</button>
+              <button type="reset" className="btn btn-outline-danger mb-2 mr-3">Cancel</button>
+              <button type="submit" className="btn btn-outline-primary mb-2">Save Card</button>
             </div>
           </form>
 
@@ -57,5 +74,7 @@ class CreateCard extends React.Component {
     )
   }
 }
+
+CreateCard.contextType = AppContext
 
 export default CreateCard
