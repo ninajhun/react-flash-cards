@@ -44,6 +44,7 @@ class App extends React.Component {
 
   saveCards() {
     let cardsJSON = JSON.stringify(this.state.cards)
+    localStorage.setItem('flash-cards', cardsJSON)
   }
 
   addCard(card) {
@@ -54,6 +55,8 @@ class App extends React.Component {
 
 
   render() {
+    console.log(localStorage.getItem('flash-cards'))
+
 
     return (
       <div>
