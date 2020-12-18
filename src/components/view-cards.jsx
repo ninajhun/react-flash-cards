@@ -8,7 +8,7 @@ class ViewCards extends React.Component {
 
     const listCards = cards.map((card, index) => {
       return (
-        <div className="col-3 mb-4 " key={index}>
+        <div className="col-4 mb-4 " key={index}>
           <div className="card h-100" >
             <div className="card-header">
               {card.question}
@@ -26,7 +26,7 @@ class ViewCards extends React.Component {
         <div className="container">
 
           <div className="row align-items-center justify-content-center">
-            <h1 className="text-center">My Cards</h1>
+            <h1 className="text-center mb-4">My Cards</h1>
           </div>
 
           <div className="row">
