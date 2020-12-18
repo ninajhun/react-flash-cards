@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'view-cards',
+      view: 'create-card',
       cards: ["hi", "1111"]
     }
     this.setView = this.setView.bind(this);
