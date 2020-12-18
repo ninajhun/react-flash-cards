@@ -10,10 +10,12 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      view: 'view-cards'
+      view: 'view-cards',
+      cards: ["hi", "1111"]
     }
     this.setView = this.setView.bind(this);
     this.getView = this.getView.bind(this);
+    this.saveCards = this.saveCards.bind(this)
   }
 
   setView(name){
@@ -35,11 +37,17 @@ class App extends React.Component {
     }
   }
 
-  // render() {
-  //   return <h1 className="text-center">Flash Card App</h1>
-  // }
+  saveCards(){
+    let cardsJSON = JSON.stringify(this.state.cards)
+    localStorage.setItem('flash-cards', cardsJSON)
+    // console.log("local storage:" , localStorage.getItem('flash-cards'))
+  }
+
 
   render() {
+    // console.log(this.state.cards);
+    // this.saveCards();
+
     return (
       <div>
         <Nav setView = {this.setView} view = {this.state.view} />
