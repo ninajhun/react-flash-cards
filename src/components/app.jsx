@@ -11,7 +11,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       view: 'view-cards',
-      cards: []
+      cards: [].concat(JSON.parse(localStorage.getItem('flash-cards')))
     }
     this.setView = this.setView.bind(this);
     this.getView = this.getView.bind(this);
@@ -59,6 +59,8 @@ class App extends React.Component {
 
 
   render() {
+
+    console.log(localStorage.getItem('flash-cards'))
 
     return (
       <div>
