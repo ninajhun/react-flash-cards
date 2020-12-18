@@ -23,6 +23,12 @@ class CreateCard extends React.Component {
               <textarea class="form-control " id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
 
+            <div className="d-flex justify-content-end">
+              <button type="reset" class="btn btn-outline-danger mb-2 mr-3">Cancel</button>
+              <button type="submit" class="btn btn-outline-primary mb-2">Save Card</button>
+            </div>
+
+
           </form>
         </div>
 
