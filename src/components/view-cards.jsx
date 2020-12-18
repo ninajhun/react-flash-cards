@@ -6,11 +6,10 @@ class ViewCards extends React.Component {
   render() {
     const cards = this.context.cards
 
-
     const listCards = cards.map((card, index) => {
       return (
-        <div className="col-3 mb-4 h-100" key={index}>
-          <div className="card" >
+        <div className="col-3 mb-4 " key={index}>
+          <div className="card h-100" >
             <div className="card-header">
               {card.question}
             </div>
@@ -18,20 +17,22 @@ class ViewCards extends React.Component {
               {card.answer}
             </div>
           </div>
-
         </div>
       )
     })
 
     return (
       <div>
-        <div className="container-fluid">
+        <div className="container">
 
           <div className="row align-items-center justify-content-center">
             <h1 className="text-center">My Cards</h1>
           </div>
 
-          <div className="deck">{listCards}</div>
+          <div className="row">
+            {listCards}
+         </div>
+
 
         </div>
       </div>
