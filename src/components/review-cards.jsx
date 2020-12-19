@@ -7,10 +7,20 @@ class ReviewCards extends React.Component {
     this.state = {
       isQuestionSide: true
     }
+    this.nextCard = this.nextCard.bind(this)
   }
 
   componentDidMount(){
     this.context.setActiveCard(0)
+  }
+
+  nextCard(){
+    let index = 0
+    if (index > this.context.cards.length - 1) {
+      index = 0
+    }
+    this.setActiveCard(index)
+    index++
   }
 
 

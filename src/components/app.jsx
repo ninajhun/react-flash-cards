@@ -37,7 +37,10 @@ class App extends React.Component {
         )
       case 'review-cards':
         return (
-          <AppContext.Provider value={{ activeCard: this.state.activeCard , setActiveCard: this.setActiveCard }}>
+          <AppContext.Provider value={{
+            activeCard: this.state.activeCard ,
+            setActiveCard: this.setActiveCard,
+            cards: this.state.cards }}>
             <ReviewCards />;
           </AppContext.Provider>
         )
