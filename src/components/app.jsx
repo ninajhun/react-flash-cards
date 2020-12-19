@@ -76,8 +76,6 @@ class App extends React.Component {
 
   render() {
 
-    console.log(localStorage.getItem('flash-cards'))
-
     return (
       <div>
         <Nav setView={this.setView} view={this.state.view} />

@@ -18,10 +18,12 @@ class ReviewCards extends React.Component {
 
   nextCard(){
     if (this.index > this.context.cards.length - 1) {
-      this.index = 0  // bug last card to first is undefined
+      this.index = 0
+      this.context.setActiveCard(this.index)
     }
-    this.index++
+
     this.context.setActiveCard(this.index)
+    this.index++
   }
 
   previousCard(){
@@ -31,12 +33,7 @@ class ReviewCards extends React.Component {
     }
     this.index--
     this.context.setActiveCard(this.index)
-
-
-
-
   }
-
 
 
   render() {
