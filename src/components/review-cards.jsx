@@ -72,9 +72,12 @@ class ReviewCards extends React.Component {
 
           <div className="row align-items-center justify-content-center">
             <div className={cardSide} onClick={this.flipCard}>
-              <i className="fas fa-chevron-left fa-3x" onClick={this.previousCard}></i>
-              <h1>{card}</h1>
-              <i className="fas fa-chevron-right fa-3x" onClick={this.nextCard}></i>
+              <i className="fas fa-chevron-left fa-4x" onClick={this.previousCard}></i>
+
+              <div className="cardTextContainer d-flex align-items-center justify-content-around">
+                <h1 className="cardText">{card}</h1>
+            </div>
+              <i className="fas fa-chevron-right fa-4x" onClick={this.nextCard}></i>
             </div>
 
           </div>

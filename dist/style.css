@@ -5,9 +5,26 @@
 }
 
 .question{
-  background-color:rgb(89, 189, 255);
+  background-color:rgb(57, 153, 255);
 }
 
 .answer {
-  background-color: #add8e6;
+  background-color:rgb(115, 183, 255);
+}
+
+.cardTextContainer{
+  height: 100%;
+  width: 90%;
+}
+
+.cardText{
+  color: white;
+}
+
+.fas {
+  color: white;
+}
+
+.fas:hover {
+  color: rgb(223, 223, 223);
 }
