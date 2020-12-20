@@ -12,7 +12,7 @@ class App extends React.Component {
     this.state = {
       view: 'review-cards',
       cards: [].concat(JSON.parse(localStorage.getItem('flash-cards'))),
-      activeCard: null
+      activeCard: 0
     }
     this.setView = this.setView.bind(this);
     this.getView = this.getView.bind(this);

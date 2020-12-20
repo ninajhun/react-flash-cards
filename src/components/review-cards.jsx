@@ -2,7 +2,7 @@ import React from "react"
 import { AppContext } from "./context"
 
 class ReviewCards extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       isQuestionSide: true
@@ -12,11 +12,11 @@ class ReviewCards extends React.Component {
     this.previousCard = this.previousCard.bind(this)
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.context.setActiveCard(0) //or this.index?
   }
 
-  nextCard(){
+  nextCard() {
     if (this.index > this.context.cards.length - 1) {
       this.index = 0
       this.context.setActiveCard(this.index)
@@ -26,8 +26,8 @@ class ReviewCards extends React.Component {
     this.index++
   }
 
-  previousCard(){
-    if(this.index === 0){
+  previousCard() {
+    if (this.index === 0) {
       this.index = this.context.cards.length;
       this.context.setActiveCard(this.index)
     }
@@ -37,20 +37,36 @@ class ReviewCards extends React.Component {
 
 
   render() {
+    let activeCard = this.context.activeCard
+    let card
+
+    if (this.state.isQuestionSide) {
+       card = activeCard.question
+    } else {
+       card = activeCard.answer
+    }
+
     return (
       <div>
         <div className="container">
-          <div className="row">
-            <h1 className="text-center">Review Cards</h1>
+
+          <div className="row align-items-center justify-content-center">
+            <h1>Review Cards</h1>
           </div>
-          <div className="row">
-            <button type="button" className="btn btn-primary" onClick={this.previousCard}>Test previousCard </button>
-            <button type="button" className="btn btn-primary" onClick= {this.nextCard}>Test Next Card</button>
+
+          <div className="row align-items-center justify-content-center">
+            <div className="review-card">
+              <h1>{card}</h1>
+            </div>
 
           </div>
+
         </div>
 
+
       </div>
+
+
 
     )
   }
@@ -58,3 +74,7 @@ class ReviewCards extends React.Component {
 
 ReviewCards.contextType = AppContext
 export default ReviewCards
+
+
+{/* <button type="button" className="btn btn-primary" onClick={this.previousCard}>Test previousCard </button>
+    <button type="button" className="btn btn-primary" onClick= {this.nextCard}>Test Next Card</button> */}
