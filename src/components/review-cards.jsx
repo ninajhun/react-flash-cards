@@ -56,10 +56,10 @@ class ReviewCards extends React.Component {
 
     if (this.state.isQuestionSide) {
       card = activeCard.question
-      cardSide = "review-card question d-flex align-items-center justify-content-center"
+      cardSide = "review-card question d-flex align-items-center justify-content-around"
     } else {
       card = activeCard.answer
-      cardSide = "review-card answer d-flex align-items-center justify-content-center"
+      cardSide = "review-card answer d-flex align-items-center justify-content-around"
     }
 
     return (
@@ -72,7 +72,9 @@ class ReviewCards extends React.Component {
 
           <div className="row align-items-center justify-content-center">
             <div className={cardSide} onClick={this.flipCard}>
+              <i className="fas fa-chevron-left fa-3x" onClick={this.previousCard}></i>
               <h1>{card}</h1>
+              <i className="fas fa-chevron-right fa-3x" onClick={this.nextCard}></i>
             </div>
 
           </div>
