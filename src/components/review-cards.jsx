@@ -37,7 +37,7 @@ class ReviewCards extends React.Component {
   }
 
   flipCard() {
-    if(this.state.isQuestionSide){
+    if (this.state.isQuestionSide) {
       this.setState({
         isQuestionSide: false
       })
@@ -52,11 +52,14 @@ class ReviewCards extends React.Component {
   render() {
     let activeCard = this.context.activeCard
     let card
+    let cardSide
 
     if (this.state.isQuestionSide) {
-       card = activeCard.question
+      card = activeCard.question
+      cardSide = "review-card question d-flex align-items-center justify-content-center"
     } else {
-       card = activeCard.answer
+      card = activeCard.answer
+      cardSide = "review-card answer d-flex align-items-center justify-content-center"
     }
 
     return (
@@ -68,7 +71,7 @@ class ReviewCards extends React.Component {
           </div>
 
           <div className="row align-items-center justify-content-center">
-            <div className="review-card" onClick={this.flipCard}>
+            <div className={cardSide} onClick={this.flipCard}>
               <h1>{card}</h1>
             </div>
 

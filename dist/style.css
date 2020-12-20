@@ -1,6 +1,13 @@
 .review-card {
-  background-color: antiquewhite;
   width: 100%;
   height: 30rem;
   padding: 2rem;
+}
+
+.question{
+  background-color:rgb(89, 189, 255);
+}
+
+.answer {
+  background-color: #add8e6;
 }
