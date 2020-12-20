@@ -10,6 +10,7 @@ class ReviewCards extends React.Component {
     this.index = 0;
     this.nextCard = this.nextCard.bind(this);
     this.previousCard = this.previousCard.bind(this)
+    this.flipCard = this.flipCard.bind(this)
   }
 
   componentDidMount() {
@@ -35,6 +36,18 @@ class ReviewCards extends React.Component {
     this.context.setActiveCard(this.index)
   }
 
+  flipCard() {
+    if(this.state.isQuestionSide){
+      this.setState({
+        isQuestionSide: false
+      })
+    } else {
+      this.setState({
+        isQuestionSide: true
+      })
+    }
+
+  }
 
   render() {
     let activeCard = this.context.activeCard
@@ -55,7 +68,7 @@ class ReviewCards extends React.Component {
           </div>
 
           <div className="row align-items-center justify-content-center">
-            <div className="review-card">
+            <div className="review-card" onClick={this.flipCard}>
               <h1>{card}</h1>
             </div>
 
