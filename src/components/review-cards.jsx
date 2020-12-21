@@ -16,7 +16,6 @@ class ReviewCards extends React.Component {
 
   componentDidMount() {
     this.context.setActiveCard(0) //or this.index?
-    // this.handleKeyDown(e)
   }
 
   nextCard() {
@@ -55,9 +54,11 @@ class ReviewCards extends React.Component {
     if(e.keyCode === 37) {
       this.previousCard()
     }
-
     if (e.keyCode === 39){
       this.nextCard()
+    }
+    if(e.keyCode === 32){
+      this.flipCard()
     }
   }
 
@@ -68,10 +69,10 @@ class ReviewCards extends React.Component {
 
     if (this.state.isQuestionSide) {
       card = activeCard.question
-      cardSide = "review-card question d-flex align-items-center justify-content-around"
+      cardSide = "question"
     } else {
       card = activeCard.answer
-      cardSide = "review-card answer d-flex align-items-center justify-content-around"
+      cardSide = "answer"
     }
 
 
@@ -83,10 +84,10 @@ class ReviewCards extends React.Component {
             <h1>Review Cards</h1>
           </div>
           <div className="row align-items-center justify-content-center">
-            <div className={cardSide} onClick={this.flipCard}  >
+            <div className={`review-card d-flex align-items-center justify-content-around ${cardSide}`} >
               <i className="fas fa-chevron-left fa-4x" onClick={this.previousCard}></i>
               <div className="cardTextContainer d-flex align-items-center justify-content-around">
-                <h1 className="cardText">{card}</h1>
+                <h1 className="cardText" onClick={this.flipCard}>{card}</h1>
             </div>
               <i className="fas fa-chevron-right fa-4x" onClick={this.nextCard}></i>
             </div>
