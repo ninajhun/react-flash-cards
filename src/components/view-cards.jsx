@@ -11,7 +11,16 @@ class ViewCards extends React.Component {
   }
 
   onDeleteClick(){
-    console.log('hi')
+    console.log('hi');
+    if(!this.state.isDeleteModalOpen) {
+      this.setState({
+        isDeleteModalOpen: true
+      })
+    } else {
+      this.setState({
+        isDeleteModalOpen: false
+      })
+    }
   }
 
   render() {
@@ -35,9 +44,24 @@ class ViewCards extends React.Component {
       )
     })
 
+
+    let modal
+    if(this.state.isDeleteModalOpen){
+      modal = (
+        <div className="delete-modal">
+          <div className="modal-content">
+            <h1>hiiii</h1>
+          </div>
+        </div>
+      )
+    } else {
+      modal = null;
+    }
+
     return (
       <div>
         <div className="container">
+          {modal}
 
           <div className="row align-items-center justify-content-center">
             <h1 className="text-center mb-4">My Cards</h1>

@@ -20,14 +20,39 @@
   width: 90%;
 }
 
-/* .question .cardText {
-  color: white;
-} */
-
 .fas {
   color: white;
 }
 
 .fas:hover {
   color: rgb(223, 223, 223);
+}
+
+
+.delete-modal {
+    background-color: rgba(0, 0, 0, .7);
+    display: flex;
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 1000;
+
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 20px;
+    margin: auto;
+    padding: 25px;
+    position: relative;
+    width: 40%;
+    z-index: 1;
+}
+
+.content h1 {
+    border-bottom: 1px solid #dedede;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
 }
