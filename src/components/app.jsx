@@ -10,13 +10,15 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'view-cards',
-      cards: [].concat(JSON.parse(localStorage.getItem('flash-cards')))
+      view: 'review-cards',
+      cards: [].concat(JSON.parse(localStorage.getItem('flash-cards'))),
+      activeCard: 0
     }
     this.setView = this.setView.bind(this);
     this.getView = this.getView.bind(this);
     this.saveCards = this.saveCards.bind(this);
-    this.addCard = this.addCard.bind(this)
+    this.addCard = this.addCard.bind(this);
+    this.setActiveCard = this.setActiveCard.bind(this);
   }
 
   setView(name) {
@@ -34,7 +36,14 @@ class App extends React.Component {
           </AppContext.Provider>
         )
       case 'review-cards':
-        return <ReviewCards />;
+        return (
+          <AppContext.Provider value={{
+            activeCard: this.state.activeCard ,
+            setActiveCard: this.setActiveCard,
+            cards: this.state.cards }}>
+            <ReviewCards />;
+          </AppContext.Provider>
+        )
       case 'view-cards':
         return (
           <AppContext.Provider value={{ cards: this.state.cards }}>
@@ -57,10 +66,15 @@ class App extends React.Component {
     }, this.saveCards)
   }
 
+  setActiveCard(index) {
+    this.setState({
+      activeCard: this.state.cards[index]
+    })
+
+  }
+
 
   render() {
-
-    console.log(localStorage.getItem('flash-cards'))
 
     return (
       <div>

@@ -1,0 +1,33 @@
+.review-card {
+  width: 100%;
+  height: 30rem;
+  padding: 2rem;
+}
+
+.question{
+  background-color:rgb(57, 153, 255);
+  transition: background-color 0.3s ease;
+
+}
+
+.answer {
+  background-color:rgb(115, 183, 255);
+   transition: background-color 0.3s ease;
+}
+
+.cardTextContainer{
+  height: 100%;
+  width: 90%;
+}
+
+/* .question .cardText {
+  color: white;
+} */
+
+.fas {
+  color: white;
+}
+
+.fas:hover {
+  color: rgb(223, 223, 223);
+}
