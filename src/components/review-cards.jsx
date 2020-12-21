@@ -11,10 +11,12 @@ class ReviewCards extends React.Component {
     this.nextCard = this.nextCard.bind(this);
     this.previousCard = this.previousCard.bind(this)
     this.flipCard = this.flipCard.bind(this)
+    this.handleKeyDown = this.handleKeyDown.bind(this)
   }
 
   componentDidMount() {
     this.context.setActiveCard(0) //or this.index?
+    // this.handleKeyDown(e)
   }
 
   nextCard() {
@@ -49,6 +51,16 @@ class ReviewCards extends React.Component {
 
   }
 
+  handleKeyDown(e){
+    if(e.keyCode === 37) {
+      this.previousCard()
+    }
+
+    if (e.keyCode === 39){
+      this.nextCard()
+    }
+  }
+
   render() {
     let activeCard = this.context.activeCard
     let card
@@ -62,40 +74,28 @@ class ReviewCards extends React.Component {
       cardSide = "review-card answer d-flex align-items-center justify-content-around"
     }
 
+
     return (
-      <div>
+      <div onKeyDown={this.handleKeyDown} tabIndex="0" style={ { outline: 'none'} }>
         <div className="container">
 
           <div className="row align-items-center justify-content-center">
             <h1>Review Cards</h1>
           </div>
-
           <div className="row align-items-center justify-content-center">
-            <div className={cardSide} onClick={this.flipCard}>
+            <div className={cardSide} onClick={this.flipCard}  >
               <i className="fas fa-chevron-left fa-4x" onClick={this.previousCard}></i>
-
               <div className="cardTextContainer d-flex align-items-center justify-content-around">
                 <h1 className="cardText">{card}</h1>
             </div>
               <i className="fas fa-chevron-right fa-4x" onClick={this.nextCard}></i>
             </div>
-
           </div>
-
         </div>
-
-
       </div>
-
-
-
     )
   }
 }
 
 ReviewCards.contextType = AppContext
 export default ReviewCards
-
-
-{/* <button type="button" className="btn btn-primary" onClick={this.previousCard}>Test previousCard </button>
-    <button type="button" className="btn btn-primary" onClick= {this.nextCard}>Test Next Card</button> */}
