@@ -5,13 +5,15 @@ class ViewCards extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isDeleteModalOpen: false
+      index = null;
+      isDeleteModalOpen: false,
+      deleteCardIndex: null
     }
-    this.onDeleteClick = this.onDeleteClick.bind(this)
+    this.onDeleteIconClick = this.onDeleteIconClick.bind(this)
+    this.deleteCard = this.deleteCard.bind(this)
   }
 
-  onDeleteClick(){
-    console.log('hi');
+  onDeleteIconClick(){
     if(!this.state.isDeleteModalOpen) {
       this.setState({
         isDeleteModalOpen: true
@@ -21,6 +23,15 @@ class ViewCards extends React.Component {
         isDeleteModalOpen: false
       })
     }
+
+
+
+
+  }
+
+  deleteCard(){
+    console.log('hi')
+
   }
 
   render() {
@@ -31,7 +42,7 @@ class ViewCards extends React.Component {
         <div className="col-4 mb-4 " key={index}>
           <div className="card h-100" >
             <div className="card-header">
-              <button type="button" className="close" aria-label="Close" onClick={this.onDeleteClick} style={ {outline:'none'} }>
+              <button type="button" className="close" aria-label="Close" onClick={this.onDeleteIconClick} style={ {outline:'none'} }>
                 <span aria-hidden="true">&times;</span>
               </button>
               {card.question}
@@ -50,7 +61,14 @@ class ViewCards extends React.Component {
       modal = (
         <div className="delete-modal">
           <div className="modal-content">
-            <h1>hiiii</h1>
+            <h4>Are you sure you want to delete this card?</h4>
+            <h6>Q:</h6>
+            <h6>A:</h6>
+
+            <div className="d-flex justify-content-end">
+              <button type="button" className="btn btn-outline-danger mb-2 mr-3" onClick={() => this.setState({isDeleteModalOpen: false})}>Cancel</button>
+              <button type="button" className="btn btn-outline-primary mb-2" onClick={this.deleteCard}>Confirm</button>
+            </div>
           </div>
         </div>
       )
