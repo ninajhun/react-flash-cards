@@ -5,12 +5,9 @@ class ReviewCards extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      card: {
-        cardSide: 'question'
-      },
+      cardSide: 'question',
       index: 0
     };
-    // this.index = 0;
     this.nextCard = this.nextCard.bind(this);
     this.previousCard = this.previousCard.bind(this)
     this.flipCard = this.flipCard.bind(this)
@@ -18,22 +15,22 @@ class ReviewCards extends React.Component {
   }
 
   componentDidMount() {
-    this.context.setActiveCard(0) //or this.index?
+    this.context.setActiveCard(0)
   }
 
   nextCard() {
     if (this.state.index > this.context.cards.length - 1) {
       this.setState({
-        card: {
+
           cardSide: 'question',
-        },
+
         index: 0
       }, this.context.setActiveCard(0));
     } else {
       this.setState({
-        card: {
-          cardSide: 'question'
-        },
+
+          cardSide: 'question',
+
         index: this.state.index + 1
       }, this.context.setActiveCard(this.state.index))
     }
@@ -57,17 +54,13 @@ class ReviewCards extends React.Component {
   }
 
   flipCard() {
-    if (this.state.card.cardSide === 'question') {
+    if (this.state.cardSide === 'question') {
       this.setState({
-        card: {
-          cardSide: 'answer'
-        }
+        cardSide: 'answer'
       })
     } else {
       this.setState({
-        card: {
-          cardSide: 'question'
-        }
+        cardSide: 'question'
       })
     }
   }
@@ -92,11 +85,8 @@ class ReviewCards extends React.Component {
 
     let card
     if (this.context.activeCard) {
-      card = this.context.activeCard[this.state.card.cardSide]
+      card = this.context.activeCard[this.state.cardSide]
     }
-
-
-
 
     return (
       <div onKeyDown={this.handleKeyDown} tabIndex="0" style={{ outline: 'none' }}>
@@ -106,7 +96,7 @@ class ReviewCards extends React.Component {
             <h1>Review Cards</h1>
           </div>
           <div className="row align-items-center justify-content-center">
-            <div className={`review-card d-flex align-items-center justify-content-around ${this.state.card.cardSide}`} >
+            <div className={`review-card d-flex align-items-center justify-content-around ${this.state.cardSide}`} >
               <i className="fas fa-chevron-left fa-4x" onClick={this.previousCard}></i>
               <div className="cardTextContainer d-flex align-items-center justify-content-around">
                 <h1 className="cardText" onClick={this.flipCard}>{card}</h1>
