@@ -5,7 +5,7 @@ class ViewCards extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      index = null;
+      index: null,
       isDeleteModalOpen: false,
       deleteCardIndex: null
     }
