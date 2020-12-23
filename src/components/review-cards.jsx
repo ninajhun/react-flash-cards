@@ -6,9 +6,9 @@ class ReviewCards extends React.Component {
     super(props);
     this.state = {
       card: {
-        cardSide: 'question',
-        index: 0
-      }
+        cardSide: 'question'
+      },
+      index: 0
     };
     // this.index = 0;
     this.nextCard = this.nextCard.bind(this);
@@ -22,24 +22,25 @@ class ReviewCards extends React.Component {
   }
 
   nextCard() {
-    if (this.state.card.index > this.context.cards.length - 1) {
+    if (this.state.index > this.context.cards.length - 1) {
       this.setState({
         card: {
           cardSide: 'question',
-          index: 0
-        }
-      }, this.context.setActiveCard(this.state.card.index))
+        },
+        index: 0
+      }, this.context.setActiveCard(0));
+    } else {
+      this.setState({
+        card: {
+          cardSide: 'question'
+        },
+        index: this.state.index + 1
+      }, this.context.setActiveCard(this.state.index))
     }
 
-      this.setState({
-        card: {
-          cardSide: 'question',
-          index: this.state.card.index + 1
-        }
-      }, this.context.setActiveCard(this.state.card.index) )
-
-
   }
+
+
 
   previousCard() {
     // if (this.index === 0) {
@@ -84,12 +85,17 @@ class ReviewCards extends React.Component {
   }
 
   render() {
-    let card
+    console.log(this.context.activeCard)
+    console.log(this.state.index)
+    // console.log(this.context.cards.length - 1)
 
+
+    let card
     if (this.context.activeCard) {
       card = this.context.activeCard[this.state.card.cardSide]
-      console.log(this.context.activeCard[this.state.card.cardSide])
     }
+
+
 
 
     return (

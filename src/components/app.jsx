@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'view-cards',
+      view: 'review-cards',
       cards: [].concat(JSON.parse(localStorage.getItem('flash-cards'))),
       activeCard: 0
     }
