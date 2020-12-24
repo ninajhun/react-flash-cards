@@ -21,36 +21,32 @@ class ReviewCards extends React.Component {
   nextCard() {
     if (this.state.index > this.context.cards.length - 1) {
       this.setState({
-
-          cardSide: 'question',
-
+        cardSide: 'question',
         index: 0
       }, this.context.setActiveCard(0));
     } else {
       this.setState({
-
-          cardSide: 'question',
-
+        cardSide: 'question',
         index: this.state.index + 1
       }, this.context.setActiveCard(this.state.index))
     }
-
   }
 
 
-
   previousCard() {
-    // if (this.index === 0) {
-    //   this.index = this.context.cards.length;
-    //   this.context.setActiveCard(this.index)
-    // }
-    // this.index--
-    // this.context.setActiveCard(this.index)
-    // this.setState({
-    //   cardSide: true  // need to add index to state. change side and index
-    // })
 
-    console.log('hi')
+    if(this.state.index === 0 ){
+      this.setState({
+        cardSide: 'question',
+        index: this.context.cards.length
+      }, this.context.setActiveCard(this.state.index));
+    } else {
+      this.setState({
+        index: this.state.index - 1,
+        cardSide: 'question',
+      }, this.context.setActiveCard(this.state.index))
+
+    }
   }
 
   flipCard() {
